@@ -1,2 +1,2 @@
 # leaflet.js-firebase
-showing realtime User-location data on a leaflet map and saving in Firebase. but marker is not shown.
+showing realtime User-location on a leaflet map and this data saving in Firebase. 
