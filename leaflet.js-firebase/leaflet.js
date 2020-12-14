@@ -12,7 +12,7 @@ var config = {
 };
 
 
-var db = db = firebase.initializeApp(config).database();
+var db = firebase.initializeApp(config).database();
 
 var { LMap, LTileLayer, LMarker } = Vue2Leaflet;
 var userRefs = db.ref('users');
