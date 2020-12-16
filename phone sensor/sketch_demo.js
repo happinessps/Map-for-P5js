@@ -25,59 +25,56 @@ function setup() {
   cx = width/2;
   cy = height/2;
   
-  // if(typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function'){
-  //   DeviceOrientationEvent.requestPermission()
-  //   .catch(() => {
-  //   let button = createButton("click to allow access to sensors");
-  //   button.style("font-size", "24px");
-  //   button.center();
-  //   button.mousePressed(requestAccess);
-  //   throw error;
-  //   })
-  //   .then(() => {
-  //   })
-  //   }else{
-  //   let button2 = createButton("click to allow access to sensors after check your deviece access to sensors");
-  //   button2.style("font-size", "24px");
-  //   button2.center();
-  //   button2.mousePressed(notDevice);
-  // }
+  if(typeof(DeviceOrientationEvent) !== 'undefined' && typeof(DeviceOrientationEvent.requestPermission) === 'function'){
+    DeviceOrientationEvent.requestPermission()
+    .catch(() => {
+    let button = createButton("click to allow access to sensors");
+    button.style("font-size", "24px");
+    button.center();
+    button.mousePressed(requestAccess);
+    throw error;
+    })
+    .then(() => {
+    })
+    }else{
+    let button2 = createButton("click to allow access to sensors after check your deviece access to sensors");
+    button2.style("font-size", "24px");
+    button2.center();
+    button2.mousePressed(notDevice);
+  }
 }
-// function requestAccess(){
-//   DeviceOrientationEvent.requestPermission()
-//     .then(response =>{
-//     if(response == 'granted'){
-//       permissionGranted = true;
-//     }else{
-//       permissionGranted = false;
-//     }
-//   })
-//   .catch(console.error);
-//   this.remove();
-// }
-// function notDevice(){ 
-//   permissionGranted = true;
-//   this.remove();
-// }
+function requestAccess(){
+  DeviceOrientationEvent.requestPermission()
+    .then(response =>{
+    if(response == 'granted'){
+      permissionGranted = true;
+    }else{
+      permissionGranted = false;
+    }
+  })
+  .catch(console.error);
+  this.remove();
+}
+function notDevice(){ 
+  permissionGranted = true;
+  this.remove();
+}
 function draw() {
-  image(allImages[index], 0, 0, width, height);
+  if(!permissionGranted) {
+    return 
+  }else {
+    stufe1=true;
+  }
+  index = round(random(2,6));
+    image(allImages[index], 0, 0, width, height);
     fill(255);
     textSize(50);
     text('Where was the last place he visited?', windowWidth/2, windowHeight/2);
-  // if(!permissionGranted) {
-  //   return 
-  // }else {
-  //   stufe1=true;
-  // }
-  // fill(random(255,0));
-  // // ellipse(400,400,width/2,height/2);
-  // stufe1=true;
 }
 
 function deviceShaken(){
-  // if(stufe1 == true){
+  if(stufe1 == true){
+    image(allImages[3], 0, 0, width, height);
     
-    index = round(random(2,6));
-    
-  // }
+  }
 }
