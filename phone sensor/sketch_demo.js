@@ -60,14 +60,13 @@ function draw() {
   if(!permissionGranted) {
     return 
   }else {
-    stufe1=true;
-  
+  stufe1=true;
   index = round(random(2,6));
   image(allImages[index], 0, 0, width, height);
   fill(255);
   textSize(50);
   text('Where was the last place he visited?', windowWidth/2, windowHeight/2);
-}
+  }
 }
 
 function deviceShaken(){
